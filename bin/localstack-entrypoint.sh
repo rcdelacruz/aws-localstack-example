@@ -41,5 +41,3 @@ aws --endpoint-url=$LOCALSTACK_URL s3 ls "s3://nyc-tlc/trip data"
 
 set +x
 
-# This is the localstack dashboard, its pretty useless so get ready to learn how to use AWS Cli well!
-printf "Localstack dashboard : http://localhost:8080/#!/infra"
