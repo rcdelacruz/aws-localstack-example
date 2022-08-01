@@ -1,0 +1,77 @@
+version: '3.8'
+#localstack URL - http://localhost:4566
+
+services:
+
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./portainer-data:/data
+    ports:
+      - 9000:9000
+
+  localstack:
+    container_name: "${LOCALSTACK_DOCKER_NAME-localstack_main}"
+    image: localstack/localstack
+    ports:
+      - "127.0.0.1:4566:4566"            # LocalStack Gateway
+      - "127.0.0.1:4510-4559:4510-4559"  # external services port range
+      - "${PORT_WEB_UI-9080}:${PORT_WEB_UI-9080}"
+    environment:
+      - DEBUG=${DEBUG-}
+      - PERSISTENCE=${PERSISTENCE-}
+      - PORT_WEB_UI=${PORT_WEB_UI- }
+      - LAMBDA_EXECUTOR=${LAMBDA_EXECUTOR-}
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      - "${LOCALSTACK_VOLUME_DIR:-./volume}:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - ./bin:/docker-entrypoint-initaws.d
+    restart: unless-stopped
+
+  # based on https://github.com/khezen/compose-postgres
+  postgres:
+    image: postgres
+    container_name: "postgres-test"
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - PGDATA=/tmp/postgres
+      # for example, connect at: 172.20.0.4:5432 with the above credentials
+    volumes:
+      - /var/tmp/postgres:/tmp/postgres
+      #- /data/postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+  
+  # default username and password: pgadmin4@pgadmin.org / admin
+  pgadmin:
+    links:
+      - postgres:postgres-test
+    image: fenglc/pgadmin4
+    container_name: "pgadmin"
+    depends_on:
+      - postgres
+    volumes:
+      - /var/tmp/.pgadmin:/tmp/.pgadmin
+      #- /data/pgadmin:/root/.pgadmin
+    ports:
+      - "5050:5050"
+    restart: unless-stopped
+
+  sftp:
+    image: atmoz/sftp
+    container_name: "sftp"
+    volumes:
+        - /var/tmp/upload:/home/foo/upload
+    ports:
+        - "2222:22"
+    command: foo:pass:1001

@@ -1,0 +1,24 @@
+2022-08-01T05:53:49.819  WARN --- [  Thread-106] hypercorn.error            : ASGI Framework Lifespan error, continuing without Lifespan support
+2022-08-01T05:53:49.819  WARN --- [  Thread-106] hypercorn.error            : ASGI Framework Lifespan error, continuing without Lifespan support
+2022-08-01T05:53:49.825  INFO --- [  Thread-106] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+2022-08-01T05:53:49.825  INFO --- [  Thread-106] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+2022-08-01T05:54:02.749  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS sqs.CreateQueue => 200
+2022-08-01T05:54:03.245  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS sqs.CreateQueue => 200
+2022-08-01T05:54:03.806  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS sqs.CreateQueue => 200
+2022-08-01T05:54:04.681  INFO --- [  Thread-119] l.services.motoserver      : starting moto server on http://0.0.0.0:60463
+2022-08-01T05:54:04.685  INFO --- [   asgi_gw_0] localstack.services.infra  : Starting mock S3 service on http port 4566 ...
+2022-08-01T05:54:05.303  INFO --- [   asgi_gw_0] localstack.utils.bootstrap : Execution of "require" took 747.59ms
+2022-08-01T05:54:05.325  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS s3.CreateBucket => 200
+2022-08-01T05:54:06.069  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS s3.CreateBucket => 200
+2022-08-01T05:54:06.664  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS s3.CreateBucket => 200
+2022-08-01T05:54:07.386  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS s3.CreateBucket => 200
+2022-08-01T05:54:07.927  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS s3.CreateBucket => 200
+2022-08-01T05:54:08.562  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS s3.CreateBucket => 200
+2022-08-01T05:54:09.130  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS s3.CreateBucket => 200
+2022-08-01T05:54:09.671  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS s3.CreateBucket => 200
+2022-08-01T05:54:10.327  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS s3.PutBucketAcl => 200
+2022-08-01T05:54:11.015  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS s3.PutBucketAcl => 200
+2022-08-01T05:54:11.711  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS s3.PutObject => 200
+2022-08-01T05:54:12.463  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS s3.ListObjectsV2 => 200
+2022-08-01T05:54:12.495  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS s3.PutObject => 200
+2022-08-01T05:54:13.100  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS s3.ListObjectsV2 => 200
